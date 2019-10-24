@@ -2,24 +2,33 @@ import java.util.TreeSet;
 
 public class Exercise_1_8_Strings {
 
-	public static TreeSet<String> generateStrings(char[] chSet, int length) {
-		//TODO
-		//TODO
-		//TODO
-		//TODO
-		//TODO
-		return null; //TODO
-	}
+    public static TreeSet<String> generateStrings(char[] chSet, int length) {
+        TreeSet<String> result = new TreeSet<>();
+        if (length > 1) {
+            for (char c : chSet) {
+                TreeSet<String> strings = generateStrings(chSet, length - 1);
+                for (String s : strings) {
+                    String elem = c + s;
+                    result.add(elem);
+                }
+            }
+        } else {
+            TreeSet<String> result1 = new TreeSet<>();
+            for (char c : chSet) result1.add(String.valueOf(c));
+            return result1;
+        }
 
-	
-	
-	public static void main(String[] args) {
-		char[] characters = { 'A', 'B', 'C', 'D', 'E' };
-		int count = 0;
-		for (String sequence : generateStrings(characters, 4)) {
-			count++;
-			System.out.printf("%5d. %s%n", count, sequence);
-		}
+        return result; //TODO What to return here instead of NULL ?
+    }
 
-	}
+
+    public static void main(String[] args) {
+        char[] characters = {'A', 'B', 'C', 'D', 'E'};
+        int count = 0;
+        for (String sequence : generateStrings(characters, 4)) {
+            count++;
+            System.out.printf("%5d. %s%n", count, sequence);
+        }
+
+    }
 }
