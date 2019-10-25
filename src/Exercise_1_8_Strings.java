@@ -4,13 +4,17 @@ public class Exercise_1_8_Strings {
 
     public static TreeSet<String> generateStrings(char[] chSet, int length) {
         TreeSet<String> result = new TreeSet<>();
+        if (length == 0) {
+            result.add(""); 
+            return result;
+        }
         if (length > 1) {
             for (char c : chSet) {
                 TreeSet<String> strings = generateStrings(chSet, length - 1);
                 for (String s : strings) result.add(c + s);
             }
         } else for (char c : chSet) result.add(String.valueOf(c));
-        return result; //TODO Why Test.java gives correct results, but JUnit tests fails.
+        return result;
     }
 
 
