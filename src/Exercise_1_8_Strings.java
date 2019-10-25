@@ -7,18 +7,10 @@ public class Exercise_1_8_Strings {
         if (length > 1) {
             for (char c : chSet) {
                 TreeSet<String> strings = generateStrings(chSet, length - 1);
-                for (String s : strings) {
-                    String elem = c + s;
-                    result.add(elem);
-                }
+                for (String s : strings) result.add(c + s);
             }
-        } else {
-            TreeSet<String> result1 = new TreeSet<>();
-            for (char c : chSet) result1.add(String.valueOf(c));
-            return result1;
-        }
-
-        return result; //TODO What to return here instead of NULL ?
+        } else for (char c : chSet) result.add(String.valueOf(c));
+        return result; //TODO Why Test.java gives correct results, but JUnit tests fails.
     }
 
 
